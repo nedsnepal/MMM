@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>May Measure Month Nepal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #dc143c;
+            --primary-dark: #8b0000;
+            --primary-light: #ff6b6b;
+            --text-dark: #1a1a2e;
+            --text-light: #4a4a68;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Scroll Animation Base Classes */
+        .fly-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fly-in-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fly-in-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .visible {
+            opacity: 1;
+            transform: translateX(0) translateY(0) scale(1);
+        }
+        
+        /* Stagger delays */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 140px 2rem 6rem;
+            text-align: center;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            animation: backgroundMove 20s linear infinite;
+        }
+        
+        @keyframes backgroundMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: var(--primary);
+            color: white;
+            border-color: white;
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button.secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: var(--bg-light);
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-bottom: 4px solid var(--primary);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+        
+        .stat-item p {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+        
+        .card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--primary-light));
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+            padding: 0 3rem;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 0;
+            box-shadow: 0 0 0 4px rgba(220, 20, 60, 0.2);
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+        
+        .timeline-year {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Screening Sites */
+        .sites-section {
+            background: var(--bg-light);
+            padding: 5rem 2rem;
+        }
+        
+        .sites-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .map-container {
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .map-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease;
+        }
+        
+        .map-container:hover img {
+            transform: scale(1.02);
+        }
+        
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .site-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .site-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .site-card h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .site-location {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .site-type {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .author-info {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .author-info strong {
+            color: var(--primary);
+            display: block;
+            font-size: 1rem;
+        }
+        
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: block;
+        }
+        
+        .tool-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), rgba(220, 20, 60, 0.05));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover .tool-icon {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .tool-card:hover .tool-icon {
+            filter: brightness(0) invert(1);
+        }
+        
+        .tool-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .tool-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section h2::after {
+            background: white;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+        
+        .cta-button.large {
+            font-size: 1.2rem;
+            padding: 1.2rem 3rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+        
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 120px 1.5rem 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .card-grid,
+            .sites-grid,
+            .tools-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                width: 100%;
+                left: 0;
+                padding-left: 60px;
+                text-align: left;
+            }
+            
+            .timeline-item::before,
+            .timeline-item:nth-child(even)::before {
+                left: 10px;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/" aria-label="home">
+                    <img width="163" alt="May Measure Month Nepal" src="https://cdn.prod.website-files.com/676d91fd93f53f894a07368f/67757d13bc5d894e04255a21_Registered-MMM-Logo.png" loading="lazy">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#sites">Sites</a></li>
+                <li><a href="#archive">Publication</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="fly-in-up">May Measure Month Nepal</h1>
+            <p class="fly-in-up delay-1">Raised blood pressure is the #1 cause of preventable death globally. In Nepal, many people don't know their numbers—until it's too late.</p>
+            <div class="fly-in-up delay-2">
+                <a href="#register" class="cta-button">Register Now</a>
+                <a href="#sites" class="cta-button secondary">Find a Site</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item fly-in-up">
+                <h3>6M+</h3>
+                <p>People screened globally</p>
+            </div>
+            <div class="stat-item fly-in-up delay-1">
+                <h3>100+</h3>
+                <p>Countries participating</p>
+            </div>
+            <div class="stat-item fly-in-up delay-2">
+                <h3>1 in 3</h3>
+                <p>Adults with high BP</p>
+            </div>
+            <div class="stat-item fly-in-up delay-3">
+                <h3>10K+</h3>
+                <p>Annual Screenings in Nepal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="fly-in-up">Who We Are</h2>
+        <p class="section-subtitle fly-in-up delay-1">
+            May Measure Month Nepal is led by the <a href="https://www.nedsnepal.org.np" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">Nepal Development Society (NEDS)</a> with support from the <a href="https://www.maymeasure.org" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">International Society of Hypertension</a>. We train research assistants, coordinate sites and trainings, conduct health camps and publish open data to improve hypertension awareness and control in Nepal.
+        </p>
+        
+        <div class="card-grid">
+            <div class="card fly-in-left delay-1">
+                <h3>Our Approach</h3>
+                <ul>
+                    <li>Opportunistic screening in adults aged 18 and above</li>
+                    <li>Mobile camps in public spaces and workplaces</li>
+                    <li>Standardized BP measurement protocols</li>
+                    <li>Data collection via nationwide surveillance</li>
+                    <li>Referral pathways and counselling mechanisms</li>
+                </ul>
+            </div>
+            <div class="card fly-in-up delay-2">
+                <h3>Collaborating Partners</h3>
+                <ul>
+                    <li>International Society of Hypertension</li>
+                    <li>Local hypertension societies</li>
+                    <li>Community groups nationwide</li>
+                    <li>Medical colleges and hospitals</li>
+                    <li>Volunteer health workers</li>
+                </ul>
+            </div>
+            <div class="card fly-in-right delay-3">
+                <h3>Nepal Chapter</h3>
+                <p>Active since 2017, reaching thousands in communities, households, and health posts. Our network continues to expand across all 77 districts.</p>
+                <p style="margin-top: 1.5rem;"><strong style="color: var(--primary);">Active since 2017</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screening Sites -->
+    <section class="sites-section" id="sites">
+        <div class="sites-container">
+            <h2 class="fly-in-up">Our Coverage Districts in 2024</h2>
+            <p class="section-subtitle fly-in-up delay-1">Community pharmacies, health posts, and mobile camps across districts.</p>
+            
+            <div class="map-container fly-in-up delay-2">
+                <img src="mmm.png" alt="Screening Sites Map">
+            </div>
+            
+            <div class="sites-grid">
+                <div class="site-card fly-in-left">
+                    <h4>Kathmandu Medical College</h4>
+                    <p class="site-location">📍 Sinamangal, Kathmandu</p>
+                    <span class="site-type">Hospital</span>
+                </div>
+                <div class="site-card fly-in-up delay-1">
+                    <h4>Patan Hospital</h4>
+                    <p class="site-location">📍 Patan, Lalitpur</p>
+                    <span class="site-type">Hospital</span>
+                </div>
+                <div class="site-card fly-in-right delay-2">
+                    <h4>Bir Hospital</h4>
+                    <p class="site-location">📍 New Road, Kathmandu</p>
+                    <span class="site-type">Hospital</span>
+                </div>
+                <div class="site-card fly-in-left">
+                    <h4>Pokhara Health Post</h4>
+                    <p class="site-location">📍 Chipledhunga, Pokhara</p>
+                    <span class="site-type">Health Post</span>
+                </div>
+                <div class="site-card fly-in-up delay-1">
+                    <h4>Bharatpur Medical College</h4>
+                    <p class="site-location">📍 Bharatpur, Chitwan</p>
+                    <span class="site-type">Hospital</span>
+                </div>
+                <div class="site-card fly-in-right delay-2">
+                    <h4>Nepalgunj Medical College</h4>
+                    <p class="site-location">📍 Nepalgunj, Banke</p>
+                    <span class="site-type">Hospital</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaign Archive -->
+    <section id="archive">
+        <h2 class="fly-in-up">Campaign Archive</h2>
+        <p class="section-subtitle fly-in-up delay-1">Our journey since 2017: expanding access to blood pressure screening across Nepal.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item fly-in-left">
+                <div class="timeline-content">
+                    <div class="timeline-year">2017</div>
+                    <p>International Society of Hypertension launches May Measurement Month worldwide.</p>
+                </div>
+            </div>
+            <div class="timeline-item fly-in-right">
+                <div class="timeline-content">
+                    <div class="timeline-year">2018</div>
+                    <p>Nepal Development Society joins as national lead, establishing first screening sites.</p>
+                </div>
+            </div>
+            <div class="timeline-item fly-in-left">
+                <div class="timeline-content">
+                    <div class="timeline-year">2019</div>
+                    <p><strong>District coverage grows:</strong> Campaign expands to major districts with over 5,000 participants screened.</p>
+                </div>
+            </div>
+            <div class="timeline-item fly-in-right">
+                <div class="timeline-content">
+                    <div class="timeline-year">2020</div>
+                    <p><strong>11,348 screened despite COVID-19:</strong> Adapted protocols with safety measures; continued vital screening services.</p>
+                </div>
+            </div>
+            <div class="timeline-item fly-in-left">
+                <div class="timeline-content">
+                    <div class="timeline-year">2021</div>
+                    <p><strong>Hybrid virtual + in-person:</strong> Launched online training and telemedicine consultations.</p>
+                </div>
+            </div>
+            <div class="timeline-item fly-in-right">
+                <div class="timeline-content">
+                    <div class="timeline-year">2022</div>
+                    <p><strong>13,120 screened across 32 districts:</strong> Major expansion reaching rural communities.</p>
+                </div>
+            </div>
+            <div class="timeline-item fly-in-left">
+                <div class="timeline-content">
+                    <div class="timeline-year">2023</div>
+                    <p>Targeting all 77 districts with enhanced data collection and referral systems.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card-grid" style="margin-top: 4rem;">
+            <div class="card fly-in-up">
+                <h3>Annual Report 2022</h3>
+                <p style="font-size: 2rem; color: var(--primary); font-weight: 700;">13,120</p>
+                <p>participants screened across 32 districts</p>
+            </div>
+            <div class="card fly-in-up delay-1">
+                <h3>Key Statistics</h3>
+                <p style="font-size: 2rem; color: var(--primary); font-weight: 700;">31.5%</p>
+                <p>Hypertension prevalence (2020)</p>
+                <p style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-top: 1rem;">46.1%</p>
+                <p>Control rate among treated</p>
+            </div>
+            <div class="card fly-in-up delay-2">
+                <h3>Annual Report 2020</h3>
+                <p style="font-size: 2rem; color: var(--primary); font-weight: 700;">11,348</p>
+                <p>participants screened despite pandemic challenges</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools & Resources -->
+    <section class="sites-section" id="tools">
+        <div class="sites-container">
+            <h2 class="fly-in-up">Tools & Resources</h2>
+            <p class="section-subtitle fly-in-up delay-1">Everything you need to participate in May Measure Month.</p>
+            
+            <div class="tools-grid">
+                <a href="#" class="tool-card fly-in-left">
+                    <div class="tool-icon">📋</div>
+                    <h3>Screening Protocol</h3>
+                    <p>Standardized BP measurement guidelines (3 readings, 1-min intervals, 5-min rest).</p>
+                </a>
+                <a href="#" class="tool-card fly-in-up delay-1">
+                    <div class="tool-icon">📊</div>
+                    <h3>Data Entry Templates</h3>
+                    <p>Excel templates for recording participant data and BP readings.</p>
+                </a>
+                <a href="#" class="tool-card fly-in-right delay-2">
+                    <div class="tool-icon">🎥</div>
+                    <h3>Training Videos</h3>
+                    <p>Step-by-step video guides on proper BP measurement technique.</p>
+                </a>
+                <a href="#" class="tool-card fly-in-left">
+                    <div class="tool-icon">🏠</div>
+                    <h3>Home BP Monitoring Guide</h3>
+                    <p>Instructions for accurate home blood pressure measurements.</p>
+                </a>
+                <a href="#" class="tool-card fly-in-up delay-1">
+                    <div class="tool-icon">🥗</div>
+                    <h3>Lifestyle Tips</h3>
+                    <p>Dietary and lifestyle advice in Nepali and English.</p>
+                </a>
+                <a href="#" class="tool-card fly-in-right delay-2">
+                    <div class="tool-icon">📱</div>
+                    <h3>MMM App</h3>
+                    <p>Mobile app for screeners to record and upload BP data.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section>
+        <h2 class="fly-in-up">What People Say</h2>
+        <p class="section-subtitle fly-in-up delay-1">Real stories from the communities we've reached.</p>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial fly-in-left">
+                <p>"I found out my BP was high during a market screening—now I'm on treatment and feeling much better. This campaign literally saved my life."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">S</div>
+                    <div class="author-info">
+                        <strong>Sita Devi Sharma</strong>
+                        Program participant, Kathmandu
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial fly-in-up delay-1">
+                <p>"As a nursing student, this gave me real-world public health experience. I've screened over 500 people and learned so much about community health."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">P</div>
+                    <div class="author-info">
+                        <strong>Prakash Rai</strong>
+                        Volunteer screener, Bharatpur
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial fly-in-right delay-2">
+                <p>"We screened 200+ people in one day at our pharmacy. The data actually changes local policy—our municipality is now prioritizing hypertension programs."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">A</div>
+                    <div class="author-info">
+                        <strong>Dr. Anjali K.C.</strong>
+                        Site coordinator, Pokhara
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration -->
+    <section class="cta-section" id="register">
+        <div class="cta-content">
+            <h2 class="fly-in-up">Ready to Check Your BP?</h2>
+            <p class="fly-in-up delay-1">Register for free. Bring a friend. It takes 5 minutes and could save your life.</p>
+            <a href="#" class="cta-button large fly-in-up delay-2">Register Now</a>
+            <p class="fly-in-up delay-3" style="margin-top: 2rem; font-size: 1rem; opacity: 0.9;">Part of the global May Measurement Month initiative by International Society of Hypertension</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 May Measure Month Nepal. All rights reserved.</p>
+        <p>Contact: <a href="mailto:info@nedsnepal.org.np">info@nedsnepal.org.np</a> | Follow us: <a href="https://www.nedsnepal.org.np" target="_blank">nedsnepal.org.np</a></p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.querySelectorAll('.fly-in-left, .fly-in-right, .fly-in-up, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
